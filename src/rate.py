@@ -9,8 +9,8 @@ class Rate:
     def rate(self) -> [[], ]:
         rates = []
         for costs in self.population:
-            i = 0
             temp_rate = []
+            i = 0
             for cost in costs:
                 try:
                     temp_rate.append(self.matrix[costs[i]][costs[i + 1]])
