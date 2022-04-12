@@ -26,7 +26,7 @@ class Selection:
         winners = []
         for bracket in tournaments:
             bracket_rates = []
-            [bracket_rates.append(x[1]) for x in bracket]
+            [bracket_rates.append(r[1]) for r in bracket]
             bracket_winner = []
             for individual, rate in enumerate(bracket_rates):
                 if rate == min(bracket_rates):
@@ -37,4 +37,4 @@ class Selection:
                 bracket_winner = [choice(bracket_winner)]
             winners.append(bracket_winner)
 
-        return [x[0] for x in [item for sublist in winners for item in sublist]]
+        return [r[0] for r in [item for sublist in winners for item in sublist]]
