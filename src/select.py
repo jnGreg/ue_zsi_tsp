@@ -21,22 +21,20 @@ class Selection:
         # This is a tournament selection
 
         tournaments = []
-        for t in range(self.number_of_tournaments):
-            bracket = sample(self.population, self.k)
-            tournaments.append(bracket)
+        [tournaments.append(sample(self.population, self.k)) for t in range(self.number_of_tournaments)]
 
         winners = []
         for bracket in tournaments:
-            score = []
-            [score.append(x[1]) for x in bracket]
-            winner = []
-            for index, x in enumerate(score):
-                if x == min(score):
-                    winner.append(bracket[index])
+            bracket_rates = []
+            [bracket_rates.append(x[1]) for x in bracket]
+            bracket_winner = []
+            for individual, rate in enumerate(bracket_rates):
+                if rate == min(bracket_rates):
+                    bracket_winner.append(bracket[individual])
                 else:
                     continue
-            if len(winner) != 1:
-                winner = [choice(winner)]
-            winners.append(winner)
+            if len(bracket_winner) > 1:
+                bracket_winner = [choice(bracket_winner)]
+            winners.append(bracket_winner)
 
         return [x[0] for x in [item for sublist in winners for item in sublist]]
